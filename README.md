@@ -1,3 +1,109 @@
+# SFI Example Project
+This project is an opportunity for you to demonstrate your technical knowledge, problem solving methods and coding style. If you don't finish all of the features, that's OK and even expected. Prioritize what you think is most important. 
+
+## Project planning
+It is useful to do some diagrams of the project structure both for your own development and for the project walkthrough you'll do with us. We reccomend using draw.io or similar app to create some simple diagrams of the app design, componnent relationships, etc. 
+
+## Project Structure and Code Style
+Show us your style! Also feel free to add to the top of this readme with any documentation or notes about your implementation. 
+
+We would also love to see the way you divide this problem into its logical pieces, and how you organize the app components accordingly. A process like https://bradfrost.com/blog/post/atomic-web-design/ is useful for this, though feel free to use any other organizational schema that you are used to. 
+
+# Recipe Application
+Create an application to store cooking recipes. While a full authentication system is not needed, you may use one if you like. At the very least, the user should be able to "sign in" with their name, and that name should be stored in state for use in the application. 
+
+## Recipe Specs
+Each recipe should have the following content:
+* An image for the recipe
+* the name of the author
+* the date of publication
+* An introductory paragraph
+* A list of ingredients with measurement amounts
+* cooking instructions
+* a list of tags that identify the cuisine style
+
+Recipe ingredients should be relational, such that recipes can be filtered/browsed by ingredient. MUI provides many useful components to achieve this, such as https://mui.com/material-ui/react-select/#multiple-select or https://mui.com/x/react-data-grid/ 
+
+You can choose to store your recipes however you like, we reccomend using a simple json file but if you'd like to integrate SQLite you may do so.
+
+## User Actions
+In a real version of this application, we would need to provide content creators with the ability to create recipe posts, but we will assume that is already done and will just build the presentation view for the reader. Readers should be able to take some actions with recipes:
+* A reader should be able to favorite a recipe and have their favorites listed in an account profile page or other appropriate area of the app. 
+* A reader should be able to double or half the ingredient amounts listed, so that they can scale recipe servings up or down.
+* this doubling/halving setting should save with the bookmark state.
+
+## Technical and Package Requirements
+### State Management
+You should use a state management package for storing user state. Use either https://redux-toolkit.js.org/ or React Context for state management. At a minimum, the state should store the user's name and their bookmarks. There may be other values you find useful to store there as well. 
+
+## UI
+Use the MUI library for your components https://mui.com/
+
+## Design Palette
+* use https://fonts.google.com/specimen/Open+Sans for body text and a header font of your choosing for titles and nav. You may create a brand of your choosing as well. 
+
+* Leverage the icons found in the MUI library for iconography.
+
+* use the following Color Palette in your design
+```scss
+/* CSS HEX */
+--wheat: #edd4b2ff;
+--tan: #d0a98fff;
+--violet-jtc: #4d243dff;
+--dun: #cac2b5ff;
+--almond: #ecdcc9ff;
+
+/* CSS HSL */
+--wheat: hsla(35, 62%, 81%, 1);
+--tan: hsla(24, 41%, 69%, 1);
+--violet-jtc: hsla(323, 36%, 22%, 1);
+--dun: hsla(37, 17%, 75%, 1);
+--almond: hsla(33, 48%, 86%, 1);
+
+/* SCSS HEX */
+$wheat: #edd4b2ff;
+$tan: #d0a98fff;
+$violet-jtc: #4d243dff;
+$dun: #cac2b5ff;
+$almond: #ecdcc9ff;
+
+/* SCSS HSL */
+$wheat: hsla(35, 62%, 81%, 1);
+$tan: hsla(24, 41%, 69%, 1);
+$violet-jtc: hsla(323, 36%, 22%, 1);
+$dun: hsla(37, 17%, 75%, 1);
+$almond: hsla(33, 48%, 86%, 1);
+
+/* SCSS RGB */
+$wheat: rgba(237, 212, 178, 1);
+$tan: rgba(208, 169, 143, 1);
+$violet-jtc: rgba(77, 36, 61, 1);
+$dun: rgba(202, 194, 181, 1);
+$almond: rgba(236, 220, 201, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #edd4b2ff, #d0a98fff, #4d243dff, #cac2b5ff, #ecdcc9ff);
+$gradient-right: linear-gradient(90deg, #edd4b2ff, #d0a98fff, #4d243dff, #cac2b5ff, #ecdcc9ff);
+$gradient-bottom: linear-gradient(180deg, #edd4b2ff, #d0a98fff, #4d243dff, #cac2b5ff, #ecdcc9ff);
+$gradient-left: linear-gradient(270deg, #edd4b2ff, #d0a98fff, #4d243dff, #cac2b5ff, #ecdcc9ff);
+$gradient-top-right: linear-gradient(45deg, #edd4b2ff, #d0a98fff, #4d243dff, #cac2b5ff, #ecdcc9ff);
+$gradient-bottom-right: linear-gradient(135deg, #edd4b2ff, #d0a98fff, #4d243dff, #cac2b5ff, #ecdcc9ff);
+$gradient-top-left: linear-gradient(225deg, #edd4b2ff, #d0a98fff, #4d243dff, #cac2b5ff, #ecdcc9ff);
+$gradient-bottom-left: linear-gradient(315deg, #edd4b2ff, #d0a98fff, #4d243dff, #cac2b5ff, #ecdcc9ff);
+$gradient-radial: radial-gradient(#edd4b2ff, #d0a98fff, #4d243dff, #cac2b5ff, #ecdcc9ff);
+```
+
+
+## Bonus Features
+If you find this project was too easy, please add some bonus features! Ideas for bonus features:
+ * Ability to download your bookmarked recipes as PDFs
+ * Recipe Sharing
+ * Recipe Creation UI page
+ * Recipe Comments
+ * Recipe User Ratings
+
+Feel free to come up with your own if you like. Have fun with it! Reach out to us at any time if you'd like more details or have any questions about what to do. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
