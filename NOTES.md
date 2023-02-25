@@ -1,11 +1,12 @@
 ## TODO
 coding
-- add types
-- content engine
-- render all content and components
+- state
 - login
+- content api
+- filter
 - bookmarks
 - scaling
+- conent engine random
 - stylize
 - cleanup
 

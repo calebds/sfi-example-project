@@ -13,23 +13,11 @@ import {
   Routes
 } from "react-router-dom";
 
+import Home from './components/Home';
+import Recipe from './components/Recipe';
+import Bookmarks from './components/Bookmarks';
+
 const drawerWidth = 340;
-
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
-
-function Recipe() {
-  return (
-    <div>
-      <h2>Recipe</h2>
-    </div>
-  );
-}
 
 export default function App(props) {
 
@@ -42,7 +30,9 @@ export default function App(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle}>
-      <div className="p-4">menu contents</div>
+      <div className="p-4">
+        <Bookmarks />
+      </div>
     </Box>
   );
 
@@ -88,7 +78,9 @@ export default function App(props) {
         </Drawer>
       </Box>
       <div className="flex">
-        <nav className="p-4 hidden lg:block w-1/3 h-screen bg-gray-200">side menu</nav>
+        <nav className="p-4 hidden lg:block w-1/3 h-screen bg-gray-200">
+          <Bookmarks />
+        </nav>
         <main className="p-4 w-full mt-[64px] lg:mt-0 lg:w-2/3">
           <Routes>
             <Route path="/" element={<Home />} />
