@@ -3,6 +3,7 @@ coding
 - add MUI
 - scaffold pages + menu
 - add types
+- stylize
 
 presentation
 - add diagrams to here
@@ -48,6 +49,9 @@ Recipe
 
 - use next + TS
 - use yarn
+
+## Approach
+- use tailwind for rapid prototyping
 
 ## Devops
 
