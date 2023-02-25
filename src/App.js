@@ -6,8 +6,30 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Routes
+} from "react-router-dom";
 
 const drawerWidth = 340;
+
+function Home() {
+  return (
+    <div>
+      <h2>Home</h2>
+    </div>
+  );
+}
+
+function Recipe() {
+  return (
+    <div>
+      <h2>Recipe</h2>
+    </div>
+  );
+}
 
 export default function App(props) {
 
@@ -27,7 +49,7 @@ export default function App(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <>
+    <Router>
       <nav className="lg:hidden">
         <AppBar>
           <Toolbar>
@@ -36,7 +58,7 @@ export default function App(props) {
               component="div"
               sx={{ flexGrow: 1 }}
             >
-              Entropizer
+              <Link to="/">Entropizer</Link>
             </Typography>
             <IconButton
               color="inherit"
@@ -67,8 +89,13 @@ export default function App(props) {
       </Box>
       <div className="flex">
         <nav className="p-4 hidden lg:block w-1/3 h-screen bg-gray-200">side menu</nav>
-        <main className="p-4 w-full mt-[64px] lg:mt-0 lg:w-2/3">content</main>
+        <main className="p-4 w-full mt-[64px] lg:mt-0 lg:w-2/3">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/recipe" element={<Recipe />} />
+          </Routes>
+        </main>
       </div>
-    </>
+    </Router>
   );
 }

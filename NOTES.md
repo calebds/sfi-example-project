@@ -1,9 +1,13 @@
 ## TODO
 coding
-- add MUI
-- scaffold pages + menu
 - add types
+- content engine
+- render all content and components
+- login
+- bookmarks
+- scaling
 - stylize
+- cleanup
 
 presentation
 - add diagrams to here
