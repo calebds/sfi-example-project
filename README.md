@@ -2,7 +2,7 @@
 This project is an opportunity for you to demonstrate your technical knowledge, problem solving methods and coding style. If you don't finish all of the features, that's OK and even expected. Prioritize what you think is most important. 
 
 ## Project planning
-It is useful to do some diagrams of the project structure both for your own development and for the project walkthrough you'll do with us. We reccomend using draw.io or similar app to create some simple diagrams of the app design, componnent relationships, etc. 
+It is useful to do some diagrams of the project structure both for your own development and for the project walkthrough you'll do with us. We recommend using draw.io or similar app to create some simple diagrams of the app design, component relationships, etc. 
 
 ## Project Structure and Code Style
 Show us your style! Also feel free to add to the top of this readme with any documentation or notes about your implementation. 
@@ -24,7 +24,7 @@ Each recipe should have the following content:
 
 Recipe ingredients should be relational, such that recipes can be filtered/browsed by ingredient. MUI provides many useful components to achieve this, such as https://mui.com/material-ui/react-select/#multiple-select or https://mui.com/x/react-data-grid/ 
 
-You can choose to store your recipes however you like, we reccomend using a simple json file but if you'd like to integrate SQLite you may do so.
+You can choose to store your recipes however you like, we recommend using a simple json file but if you'd like to integrate SQLite you may do so.
 
 ## User Actions
 In a real version of this application, we would need to provide content creators with the ability to create recipe posts, but we will assume that is already done and will just build the presentation view for the reader. Readers should be able to take some actions with recipes:
