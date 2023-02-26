@@ -146,7 +146,7 @@ export default function App(props) {
           <nav className="hidden lg:block w-1/3 h-screen bg-gray-200">
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Entropizer
+                <Link to="/">Entropizer</Link>
               </Typography>
               {authenticated ?
                 <Button onClick={handleLogout}>Sign Out</Button> :

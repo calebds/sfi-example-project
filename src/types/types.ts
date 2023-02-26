@@ -1,7 +1,8 @@
 export type Recipe = {
   title: string
   slug: string
-  image: string
+  image: string,
+  previewImage: string,
   authorName: string
   publishDate: Date
   intro: string
