@@ -1,7 +1,5 @@
 ## TODO
 coding
-- state
-- login
 - content api
 - filter
 - bookmarks
