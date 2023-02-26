@@ -1,5 +1,7 @@
-import { Recipe } from "../types/types";
+import { Recipe, Ingredient } from "../types/types";
 import titles from "./titles.json";
+import ingredients from "./ingredients.json";
+import tags from "./tags.json";
 import Jabber from "jabber";
 
 const maxRecipes = 10;
@@ -15,11 +17,25 @@ const colorPallete = [
   'ecdcc9ff'
 ];
 
-const jabber = new Jabber();
+const units = [
+  '',
+  'tsp',
+  'tbsp',
+  'fl oz',
+  'cups',
+  'pints',
+  'quarts',
+  'gallons'
+];
+
+const jabber = new Jabber(ingredients.ingredients);
+
+function getRandomIngredientName(): string {
+  return getRandomItemFromArray(ingredients.ingredients);
+}
 
 function getRandomRecipeTitle(): string {
-  // 427 is number of random title options
-  return titles.titles[getRandomInt(427)];
+  return getRandomItemFromArray(titles.titles);
 }
 
 function getRandomInt(max: number): number {
@@ -39,23 +55,42 @@ function getRandomDateSince2000() {
   const offsetMse = getRandomInt(maxMse - mse2000);
   return new Date(offsetMse + mse2000);
 }
+
+function generateRandomIngredient(): Ingredient {
+  return {
+    name: getRandomIngredientName(),
+    quantity: getRandomInt(19) + 1, // avoid zero
+    unit: getRandomItemFromArray(units)
+  }
+}
+
+function generateRandomIngredients(max: number): Ingredient[] {
+  const ingredientsList = [];
+  for (let i = 0; i < getRandomInt(max + 1); i++) {
+    ingredientsList.push(generateRandomIngredient());
+  }
+  return ingredientsList;
+}
+
+function generateRandomTags(max: number): string[] {
+  const tagList = [];
+  for (let i = 0; i < getRandomInt(max + 1); i++) {
+    tagList.push(getRandomItemFromArray(tags.tags));
+  }
+  return tagList;
+}
+
 function generateRandomRecipe(): Recipe {
   const title = getRandomRecipeTitle();
   const slug = title.replace(/\s+/g, '-').toLowerCase();
   const image = getRandomTextImageBySize('400x300', title);
   const previewImage = getRandomTextImageBySize('150', title);
-  const authorName = jabber.createFullName(false); // no salutation
+  const authorName = jabber.createFullName(false); // disable salutation
   const publishDate = getRandomDateSince2000();
   const intro = jabber.createParagraph(30);
-  const ingredients = [
-    {
-      name: 'Chicken',
-      quantity: 1,
-      unit: 'lb'
-    }
-  ]; // TODO
+  const ingredients = generateRandomIngredients(10);
   const instructions = jabber.createParagraph(30);
-  const tags = ['spicy', 'indian']; // TODO
+  const tags = generateRandomTags(5);
   return {
     title: title,
     image: image,
@@ -72,30 +107,11 @@ function generateRandomRecipe(): Recipe {
 
 function generateRandomRecipes(max: number): Recipe[] {
   const recipes = [];
-  for (let i = 0; i < max; i++) {
+  for (let i = 0; i < getRandomInt(max + 1); i++) {
     recipes.push(generateRandomRecipe());
   }
   return recipes;
 }
-
-export const defaultRecipe = {
-  title: 'Rehydrated Chicken Curry',
-  slug: 'rehydrated-chicken-curry',
-  image: 'https://via.placeholder.com/400/FF0000/FFFFFF?text=Rehydrated%20Chicken%20Curry',
-  previewImage: 'https://via.placeholder.com/150/FF0000/FFFFFF?text=Rehydrated%20Chicken%20Curry',
-  authorName: 'Caleb Sotelo',
-  publishDate: new Date(),
-  intro: 'A long time ago...',
-  ingredients: [
-    {
-      name: 'Chicken',
-      quantity: 1,
-      unit: 'lb'
-    }
-  ],
-  instructions: 'This is how to make __rehydrated chicken curry__!',
-  tags: ['spicy', 'indian']
-};
 
 export function getRecipeBySlug(slug: string): Recipe {
   return generateRandomRecipe();
