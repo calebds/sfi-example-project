@@ -40,13 +40,7 @@ Live demo: https://entropizer.calebds.dev
 - add tests
 - eslint + prettier
 
-presentation
-- add diagrams to here
-- describe project structure
-- add link to this doc in README
-
 ## Data model
-
 Recipe
 - *title: string
 - *slug: string
