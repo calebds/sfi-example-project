@@ -1,13 +1,47 @@
-## TODO
-design
-- modal
+## About
 
-coding
-- scaling
-- code format
-- host
+Live demo: https://entropizer.calebds.dev
+
+- Cool features
+  - Mobile-friendly responsive design
+  - Customizable random recipe generator
+- Design Process
+  - [UX wireframes](https://drive.google.com/file/d/1pOgbSXbPwX7bsYZtMwsLaZoKTYr_KTly/view?usp=sharing)
+  - Pages
+    - `/` - home
+    - `/recipe/:slug` - Recipe detail page
+  - [Component diagrams](https://docs.google.com/presentation/d/1a7bsjx7QPOEvrrmIchEWJd6rpAe5lsPouJADmcMwwIw/edit?usp=sharing)
+  - [Data Model](#data-model)
+- Technical Design
+  - Added TypeScript support
+  - Redux Toolkit for state management
+  - React Router DOM for routing
+  - Styles
+    - MUI React for AppBar, base styles, icons.
+    - TailwindCSS for rapid prototyping
+- Project Structure
+  - `/app` - app state
+  - `/components` - custom react components
+  - `/content` - random recipe engine
+  - `/types` - type definition
+- Devops
+  - Uses Docker for development environment (dev.sh)
+  - Hosted in a Google Cloud Storage behind Cloudflare DNS
+- Data sources for random recipe engine
+  - [Food adjectives for tags](https://englishstudyhere-com.cdn.ampproject.org/c/s/englishstudyhere.com/grammar/adjectives/food-adjectives-list-of-food-adjectives/amp/)
+  - [Ingredients](https://github.com/schollz/food-identicon/blob/master/ingredients.txt)
+  - [Recipe titles (sampled)](https://github.com/dpapathanasiou/recipes)
+  - [Lorem Ipsum, names, customized with theme words](https://github.com/dejavu1987/jabber)
+  - [Placeholder iages](https://www.placeholder.com/)
+
+
+## TODO
+- style modal
+- code format & cleanup
+
 - use gradient
-- test
+- scale ingredients
+- add tests
 
 presentation
 - add diagrams to here
@@ -32,40 +66,19 @@ Ingredient
 - quantity: number
 - unit: string
 
-User
+Auth
 - name: string
-- bookmarks: string[] (slugs)
+- isAuthenticated: boolean
+
+ScaleSlice
 - scales: { [key: string]: number; } (key = recipe slug)
 
-## Pages
-
-Home
-- `/`
-- List of recipes
-- Filter / search
-
-Recipe
-- `/[slug]`
-- Recipe detail
-- Quantity multiplier
-
 ## How I'd bootstrap a project like this
-
 - use next + TS
 - use yarn
-
-## Approach
-- use tailwind for rapid prototyping
-
-## Devops
-
-- dev.sh runs application in a Docker Node env
-
-## Data sources
-- https://englishstudyhere-com.cdn.ampproject.org/c/s/englishstudyhere.com/grammar/adjectives/food-adjectives-list-of-food-adjectives/amp/
-- https://github.com/schollz/food-identicon/blob/master/ingredients.txt
-- https://github.com/dpapathanasiou/recipes
-- https://github.com/dejavu1987/jabber
+- deploy on Vercel
 
 ## Feedback
-- extra 'ff' at the end of color pallette values?
+- extra 'ff' at the end of color pallette values
+- description is very broad, many degrees of freedom, I would reduce what is _required_ and make it more precise, so that it's feasible to do in 1-2 days
+- consider adding a hosting requirement to check devops / infra abilities
