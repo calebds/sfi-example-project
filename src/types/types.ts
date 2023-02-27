@@ -4,7 +4,7 @@ export type Recipe = {
   image: string,
   previewImage: string,
   authorName: string
-  publishDate: Date
+  publishDate: string
   intro: string
   ingredients: Ingredient[]
   instructions: string

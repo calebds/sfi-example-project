@@ -1,15 +1,19 @@
-import { getAllRecipes } from "../content/recipes";
 import RecipeHeader from "./RecipeHeader";
+import type { RootState } from '../app/store';
+import { useSelector } from "react-redux";
+
 export default function Bookmarks() {
-  //const allRecipes = getAllRecipes();
+  const bookmarks = useSelector(
+    (state: RootState) => Object.values(state.bookmarks.bookmarks)
+  );
   return (
     <div>
       <ul>
-        {/* {allRecipes.map((recipe, i) => (
+        {bookmarks.map((recipe, i) => (
           <li className="mb-2" key={i}>
-            <RecipeHeader recipe={recipe} />
+            <RecipeHeader variant="bookmark" recipe={recipe} />
           </li>
-        ))} */}
+        ))}
       </ul>
     </div>
   );

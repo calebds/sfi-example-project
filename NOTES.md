@@ -1,12 +1,11 @@
 ## TODO
 coding
-- content api
-- filter
 - bookmarks
-- scaling
-- conent engine random
 - stylize
+- filter
+- scaling
 - cleanup
+- code format
 
 presentation
 - add diagrams to here
@@ -59,3 +58,9 @@ Recipe
 ## Devops
 
 - dev.sh runs application in a Docker Node env
+
+## Data sources
+- https://englishstudyhere-com.cdn.ampproject.org/c/s/englishstudyhere.com/grammar/adjectives/food-adjectives-list-of-food-adjectives/amp/
+- https://github.com/schollz/food-identicon/blob/master/ingredients.txt
+- https://github.com/dpapathanasiou/recipes
+- https://github.com/dejavu1987/jabber

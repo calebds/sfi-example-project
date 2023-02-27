@@ -14,18 +14,7 @@ const initialState: RecipesState = {
 export const recipesSlice = createSlice({
   name: 'recipes',
   initialState,
-  reducers: {
-    // login: (state, action: PayloadAction<string>) => {
-    //   state.name = action.payload;
-    //   state.authenticated = true;
-    // },
-    // logout: (state) => {
-    //   state.name = '';
-    //   state.authenticated = false;
-    // }
-  },
+  reducers: {},
 });
-
-//export const { login, logout } = recipesSlice.actions;
 
 export default recipesSlice.reducer;

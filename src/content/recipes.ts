@@ -53,7 +53,9 @@ function getRandomTextImageBySize(size: string, text: string): string {
 
 function getRandomDateSince2000() {
   const offsetMse = getRandomInt(maxMse - mse2000);
-  return new Date(offsetMse + mse2000);
+  const date = new Date(offsetMse + mse2000);
+  const dateStr = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+  return dateStr;
 }
 
 function generateRandomIngredient(): Ingredient {
@@ -66,7 +68,7 @@ function generateRandomIngredient(): Ingredient {
 
 function generateRandomIngredients(max: number): Ingredient[] {
   const ingredientsList = [];
-  for (let i = 0; i < getRandomInt(max + 1); i++) {
+  for (let i = 0; i < getRandomInt(max) + 1; i++) {
     ingredientsList.push(generateRandomIngredient());
   }
   return ingredientsList;
@@ -74,7 +76,7 @@ function generateRandomIngredients(max: number): Ingredient[] {
 
 function generateRandomTags(max: number): string[] {
   const tagList = [];
-  for (let i = 0; i < getRandomInt(max + 1); i++) {
+  for (let i = 0; i < getRandomInt(max) + 1; i++) {
     tagList.push(getRandomItemFromArray(tags.tags));
   }
   return tagList;
@@ -107,16 +109,12 @@ function generateRandomRecipe(): Recipe {
 
 function generateRandomRecipes(max: number): Recipe[] {
   const recipes = [];
-  for (let i = 0; i < getRandomInt(max + 1); i++) {
+  for (let i = 0; i < getRandomInt(max) + 1; i++) {
     recipes.push(generateRandomRecipe());
   }
   return recipes;
 }
 
-export function getRecipeBySlug(slug: string): Recipe {
-  return generateRandomRecipe();
-}
-
 export function getAllRecipes(): Recipe[] {
-  return generateRandomRecipes(10);
+  return generateRandomRecipes(maxRecipes);
 }

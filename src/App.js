@@ -73,15 +73,6 @@ export default function App(props) {
     dispatch(logout());
   }
 
-  // Drawer component. TODO: pull out.
-  const drawer = (
-    <Box onClick={handleDrawerToggle}>
-      <div className="p-4">
-        <Bookmarks />
-      </div>
-    </Box>
-  );
-
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
@@ -139,7 +130,11 @@ export default function App(props) {
               '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
             }}
           >
-            {drawer}
+            <Box onClick={handleDrawerToggle}>
+              <div className="p-4">
+                <Bookmarks />
+              </div>
+            </Box>
           </Drawer>
         </Box>
         <div className="flex">
@@ -161,7 +156,7 @@ export default function App(props) {
           <main className="p-4 w-full mt-[64px] lg:mt-0 lg:w-2/3">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/recipe" element={<Recipe />} />
+              <Route path="/recipe/:slug" element={<Recipe />} />
             </Routes>
           </main>
         </div>
