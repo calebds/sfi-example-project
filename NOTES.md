@@ -1,14 +1,13 @@
 ## TODO
 design
-- recipe page
+- modal
 
 coding
-- stylize
-- use gradient
-- filter
 - scaling
-- cleanup
 - code format
+- host
+- use gradient
+- test
 
 presentation
 - add diagrams to here

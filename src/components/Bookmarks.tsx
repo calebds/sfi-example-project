@@ -7,16 +7,22 @@ export default function Bookmarks() {
   const bookmarks = useSelector(
     (state: RootState) => Object.values(state.bookmarks.bookmarks)
   );
-  if (!authenticated) return <div>Sign in to start saving recipes.</div>
+  // const bookmarks = useSelector((state: RootState) => state.recipes.recipes);
+  const username = useSelector((state: RootState) => state.auth.name);
   return (
-    <div>
-      <ul>
-        {bookmarks.map((recipe, i) => (
-          <li className="mb-2" key={i}>
-            <RecipeHeader variant="bookmark" recipe={recipe} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    authenticated ?
+      <div>
+        <h2 className="text-xl mb-4 font-semibold">{username}'s Bookmarks</h2>
+        <ul className="flex flex-col space-y-4">
+          {
+            bookmarks.map((recipe, i) => (
+              <li key={i}>
+                <RecipeHeader variant="bookmark" recipe={recipe} />
+              </li>
+            ))
+          }
+        </ul>
+      </div> :
+      <div>Sign in to start saving recipes.</div>
   );
 }

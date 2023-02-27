@@ -4,7 +4,7 @@ import ingredients from "./ingredients.json";
 import tags from "./tags.json";
 import Jabber from "jabber";
 
-const maxRecipes = 10;
+const maxRecipes = 20;
 
 const mse2000 = 946713600000;
 const maxMse = new Date().getTime();
@@ -29,6 +29,10 @@ const units = [
 ];
 
 const jabber = new Jabber(ingredients.ingredients);
+
+function capitalizeFirstLetter(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 function getRandomIngredientName(): string {
   return getRandomItemFromArray(ingredients.ingredients);
@@ -77,21 +81,29 @@ function generateRandomIngredients(max: number): Ingredient[] {
 function generateRandomTags(max: number): string[] {
   const tagList = [];
   for (let i = 0; i < getRandomInt(max) + 1; i++) {
-    tagList.push(getRandomItemFromArray(tags.tags));
+    tagList.push(capitalizeFirstLetter(getRandomItemFromArray(tags.tags)));
   }
   return tagList;
 }
 
-function generateRandomRecipe(): Recipe {
+function generateRandomParagraphs(max: number): string {
+  const paragraphs = [];
+  for (let i = 0; i < getRandomInt(max) + 1; i++) {
+    paragraphs.push(jabber.createParagraph(getRandomInt(50) + 1));
+  }
+  return paragraphs.join('\n\n');
+}
+
+export function generateRandomRecipe(): Recipe {
   const title = getRandomRecipeTitle();
   const slug = title.replace(/\s+/g, '-').toLowerCase();
-  const image = getRandomTextImageBySize('400x300', title);
-  const previewImage = getRandomTextImageBySize('150', title);
+  const image = getRandomTextImageBySize('800x600', title);
+  const previewImage = getRandomTextImageBySize('100', title);
   const authorName = jabber.createFullName(false); // disable salutation
   const publishDate = getRandomDateSince2000();
-  const intro = jabber.createParagraph(30);
-  const ingredients = generateRandomIngredients(10);
-  const instructions = jabber.createParagraph(30);
+  const intro = generateRandomParagraphs(5);
+  const ingredients = generateRandomIngredients(15);
+  const instructions = generateRandomParagraphs(7);
   const tags = generateRandomTags(5);
   return {
     title: title,

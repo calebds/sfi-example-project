@@ -80,7 +80,7 @@ export default function App(props) {
   const handleLogout = () => {
     dispatch(logout());
     dispatch(clearBookmarks());
-  }
+  };
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -154,7 +154,7 @@ export default function App(props) {
           </Drawer>
         </Box>
         <div className="flex lg:justify-end">
-          <nav className="hidden lg:block fixed left-0 top-0 w-1/3 h-screen bg-[#FBF6EF]">
+          <nav className="hidden lg:block overflow-scroll fixed left-0 top-0 w-1/3 h-screen bg-[#FBF6EF]">
             <AppBar position="static" elevation={0}>
               <Toolbar>
                 <TrendingUpIcon />
