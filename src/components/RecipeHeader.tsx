@@ -14,6 +14,7 @@ export default function RecipeHeader({ recipe, variant }: {
   variant: 'bookmark' | 'detail' | 'list'
 }) {
   const dispatch = useDispatch();
+  const authenticated = useSelector((state: RootState) => state.auth.authenticated);
   const isBookmarked = useSelector((state: RootState) => state.bookmarks.bookmarks.hasOwnProperty(recipe.slug));
   const handleEditBookmark = () => {
     if (isBookmarked) {
@@ -29,14 +30,14 @@ export default function RecipeHeader({ recipe, variant }: {
       </div>}
       <div>
         <div className="flex flex-row items-center">
-          <IconButton
+          {authenticated && <IconButton
             color="inherit"
             aria-label="add bookmark"
             onClick={handleEditBookmark}
             edge="start"
           >
             {isBookmarked ? <BookmarkAddedIcon /> : <BookmarkBorderIcon />}
-          </IconButton>
+          </IconButton>}
           <Link to={`/recipe/${recipe.slug}`}>
             <h2 className="text-xl">{recipe.title}</h2>
           </Link>

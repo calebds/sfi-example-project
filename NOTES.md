@@ -1,6 +1,6 @@
 ## TODO
 coding
-- bookmarks
+- improve images
 - stylize
 - filter
 - scaling

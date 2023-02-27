@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {
   BrowserRouter as Router,
@@ -24,6 +24,7 @@ import Bookmarks from './components/Bookmarks';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from './app/authSlice';
+import { clearBookmarks } from './app/bookmarksSlice';
 
 const drawerWidth = 340;
 
@@ -71,6 +72,7 @@ export default function App(props) {
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(clearBookmarks());
   }
 
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -112,7 +114,7 @@ export default function App(props) {
                 edge="start"
                 onClick={handleDrawerToggle}
               >
-                <MenuIcon />
+                <BookmarksIcon />
               </IconButton>
             </Toolbar>
           </AppBar>

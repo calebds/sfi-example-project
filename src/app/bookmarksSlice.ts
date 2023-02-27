@@ -19,10 +19,13 @@ export const bookmarksSlice = createSlice({
     },
     removeBookmark: (state, action: PayloadAction<string>) => {
       delete state.bookmarks[action.payload];
+    },
+    clearBookmarks: (state) => {
+      state.bookmarks = {};
     }
   },
 });
 
-export const { addBookmark, removeBookmark } = bookmarksSlice.actions;
+export const { addBookmark, removeBookmark, clearBookmarks } = bookmarksSlice.actions;
 
 export default bookmarksSlice.reducer;

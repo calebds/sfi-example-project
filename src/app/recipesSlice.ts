@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 import type { Recipe } from '../types/types';
 import * as Recipes from '../content/recipes';
 
