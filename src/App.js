@@ -10,7 +10,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import {
   BrowserRouter as Router,
   Link,
@@ -20,11 +20,18 @@ import {
 import Home from './components/Home';
 import Recipe from './components/Recipe';
 import Bookmarks from './components/Bookmarks';
-
-// redux
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from './app/authSlice';
 import { clearBookmarks } from './app/bookmarksSlice';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const entropizerTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#4d243d",
+    },
+  },
+});
 
 const drawerWidth = 340;
 
@@ -78,7 +85,7 @@ export default function App(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <>
+    <ThemeProvider theme={entropizerTheme}>
       <CssBaseline />
       <Router>
         <Modal
@@ -97,10 +104,14 @@ export default function App(props) {
         <nav className="lg:hidden">
           <AppBar>
             <Toolbar>
+              <TrendingUpIcon />
               <Typography
                 variant="h6"
                 component="div"
-                sx={{ flexGrow: 1 }}
+                sx={{
+                  flexGrow: 1,
+                  ml: 1
+                }}
               >
                 <Link to="/">Entropizer</Link>
               </Typography>
@@ -113,6 +124,9 @@ export default function App(props) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
+                sx={{
+                  ml: 1
+                }}
               >
                 <BookmarksIcon />
               </IconButton>
@@ -139,19 +153,21 @@ export default function App(props) {
             </Box>
           </Drawer>
         </Box>
-        <div className="flex">
-          <nav className="hidden lg:block w-1/3 h-screen bg-gray-200">
-            <Toolbar>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <Link to="/">Entropizer</Link>
-              </Typography>
-              {authenticated ?
-                <Button onClick={handleLogout}>Sign Out</Button> :
-                <Button onClick={handleAuthOpen}>Sign In</Button>
-              }
-              <AccountCircleIcon />
-            </Toolbar>
-            <section className="p-4 pt-0">
+        <div className="flex lg:justify-end">
+          <nav className="hidden lg:block fixed left-0 top-0 w-1/3 h-screen bg-[#FBF6EF]">
+            <AppBar position="static" elevation={0}>
+              <Toolbar>
+                <TrendingUpIcon />
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: 1 }}>
+                  <Link to="/">Entropizer</Link>
+                </Typography>
+                {authenticated ?
+                  <Button color="inherit" onClick={handleLogout}>Sign Out</Button> :
+                  <Button color="inherit" onClick={handleAuthOpen}>Sign In</Button>
+                }
+              </Toolbar>
+            </AppBar>
+            <section className="p-4">
               <Bookmarks />
             </section>
           </nav>
@@ -163,6 +179,6 @@ export default function App(props) {
           </main>
         </div>
       </Router>
-    </>
+    </ThemeProvider>
   );
 }

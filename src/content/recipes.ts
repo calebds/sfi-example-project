@@ -10,11 +10,11 @@ const mse2000 = 946713600000;
 const maxMse = new Date().getTime();
 
 const colorPallete = [
-  'edd4b2ff',
-  'd0a98fff',
-  '4d243dff',
-  'cac2b5ff',
-  'ecdcc9ff'
+  'edd4b2',
+  'd0a98f',
+  //'4d243d',
+  'cac2b5',
+  'ecdcc9'
 ];
 
 const units = [

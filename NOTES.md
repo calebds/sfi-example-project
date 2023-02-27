@@ -1,7 +1,10 @@
 ## TODO
+design
+- recipe page
+
 coding
-- improve images
 - stylize
+- use gradient
 - filter
 - scaling
 - cleanup
@@ -64,3 +67,6 @@ Recipe
 - https://github.com/schollz/food-identicon/blob/master/ingredients.txt
 - https://github.com/dpapathanasiou/recipes
 - https://github.com/dejavu1987/jabber
+
+## Feedback
+- extra 'ff' at the end of color pallette values?
