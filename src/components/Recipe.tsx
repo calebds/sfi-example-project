@@ -4,13 +4,12 @@ import {
 } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import RecipeHeader from './RecipeHeader';
-// import { generateRandomRecipe } from '../content/recipes';
 
+// Recipe detail component.
 export default function Recipe() {
   const { slug } = useParams();
   const recipe = useSelector((state: RootState) => state.recipes.recipes.find(r => r.slug === slug));
   if (recipe == null) return <div>404</div>;
-  // const recipe = generateRandomRecipe();
   return (
     <div className="flex flex-col space-y-4">
       <RecipeHeader variant="detail" recipe={recipe} />

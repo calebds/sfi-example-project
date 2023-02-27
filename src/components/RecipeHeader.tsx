@@ -1,4 +1,3 @@
-import { Recipe } from "../types/types";
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { IconButton } from "@mui/material";
@@ -8,7 +7,9 @@ import { addBookmark, removeBookmark } from '../app/bookmarksSlice';
 import {
   Link
 } from "react-router-dom";
+import { Recipe } from "../types/types";
 
+// Helper function to render title.
 function renderTitle(variant: string, title: string) {
   switch (variant) {
     case 'detail':
@@ -20,6 +21,7 @@ function renderTitle(variant: string, title: string) {
   }
 }
 
+// Helper function ro render tags.
 function renderTags(variant: string, tags: string[]) {
   const tagElements = [];
   for (let i = 0; i < tags.length; i++) {
@@ -33,12 +35,15 @@ function renderTags(variant: string, tags: string[]) {
   return tagElements;
 }
 
+// Recipe header component with three variants.
 export default function RecipeHeader({ recipe, variant }: {
   recipe: Recipe,
   variant: 'bookmark' | 'detail' | 'list'
 }) {
   const dispatch = useDispatch();
   const authenticated = useSelector((state: RootState) => state.auth.authenticated);
+
+  // Bookmark-related state.
   const isBookmarked = useSelector((state: RootState) => state.bookmarks.bookmarks.hasOwnProperty(recipe.slug));
   const handleEditBookmark = () => {
     if (isBookmarked) {

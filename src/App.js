@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -17,14 +16,16 @@ import {
   Route,
   Routes
 } from "react-router-dom";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Home from './components/Home';
 import Recipe from './components/Recipe';
 import Bookmarks from './components/Bookmarks';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from './app/authSlice';
 import { clearBookmarks } from './app/bookmarksSlice';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+// Theme and style config.
 const entropizerTheme = createTheme({
   palette: {
     primary: {
@@ -32,9 +33,7 @@ const entropizerTheme = createTheme({
     },
   },
 });
-
 const drawerWidth = 340;
-
 const modalStyle = {
   position: 'absolute',
   top: '50%',
@@ -47,6 +46,7 @@ const modalStyle = {
   p: 4,
 };
 
+// App component.
 export default function App(props) {
 
   // Drawer state (mobile screens only).
@@ -68,7 +68,7 @@ export default function App(props) {
     setUserNameInput(event.target.value);
   };
 
-  // Authentication-related global state
+  // Authentication-related global state.
   const authenticated = useSelector((state) => state.auth.authenticated);
   const dispatch = useDispatch();
 
@@ -88,6 +88,7 @@ export default function App(props) {
     <ThemeProvider theme={entropizerTheme}>
       <CssBaseline />
       <Router>
+        {/* Login modal component */}
         <Modal
           open={authOpen}
           onClose={handleAuthClose}
@@ -96,13 +97,16 @@ export default function App(props) {
         >
           <Box style={modalStyle}>
             <div className="p-6 flex">
-              <TextField className="flex-grow" id="username-field" label="Enter your name" onChange={handleNameChange} variant="outlined" />
+              <TextField className="flex-grow" id="username-field"
+                label="Enter your name" onChange={handleNameChange} variant="outlined" />
               <Button color="primary" sx={{
                 ml: 1
-              }} size="large" variant="contained" disabled={userNameInput.length < 3} onClick={handleLogin}>Sign In</Button>
+              }} size="large" variant="contained"
+                disabled={userNameInput.length < 3} onClick={handleLogin}>Sign In</Button>
             </div>
           </Box>
         </Modal>
+        {/* Mobile-only app bar */}
         <nav className="lg:hidden">
           <AppBar>
             <Toolbar>
@@ -135,6 +139,7 @@ export default function App(props) {
             </Toolbar>
           </AppBar>
         </nav>
+        {/* Mobile-only drawer component */}
         <Box>
           <Drawer
             container={container}
@@ -156,6 +161,7 @@ export default function App(props) {
           </Drawer>
         </Box>
         <div className="flex lg:justify-end">
+          {/* Desktop-only sidebar */}
           <nav className="hidden lg:block overflow-scroll fixed left-0 top-0 w-1/3 h-screen bg-[#FBF6EF]">
             <AppBar position="static" elevation={0}>
               <Toolbar>
@@ -173,6 +179,7 @@ export default function App(props) {
               <Bookmarks />
             </section>
           </nav>
+          {/* Main content, visible on all screen sizes */}
           <main className="p-4 w-full mt-[64px] lg:mt-0 lg:w-2/3">
             <Routes>
               <Route path="/" element={<Home />} />

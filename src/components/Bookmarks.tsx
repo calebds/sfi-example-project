@@ -1,13 +1,17 @@
-import RecipeHeader from "./RecipeHeader";
 import type { RootState } from '../app/store';
 import { useSelector } from "react-redux";
+import RecipeHeader from "./RecipeHeader";
 
+// Bookmarks component.
 export default function Bookmarks() {
+  // Auth-related state.
   const authenticated = useSelector((state: RootState) => state.auth.authenticated);
+  const username = useSelector((state: RootState) => state.auth.name);
+
+  // Bookmarks state.
   const bookmarks = useSelector(
     (state: RootState) => Object.values(state.bookmarks.bookmarks)
   );
-  const username = useSelector((state: RootState) => state.auth.name);
   return (
     authenticated ?
       <div>

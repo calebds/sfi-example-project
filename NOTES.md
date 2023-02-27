@@ -35,12 +35,10 @@ Live demo: https://entropizer.calebds.dev
   - [Placeholder iages](https://www.placeholder.com/)
 
 ## TODO
-- style modal
-- code format & cleanup
-
 - use gradient
 - scale ingredients
 - add tests
+- eslint + prettier
 
 presentation
 - add diagrams to here

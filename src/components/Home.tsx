@@ -1,11 +1,12 @@
-import type { RootState } from '../app/store';
-import { useSelector } from 'react-redux';
-import RecipeHeader from "./RecipeHeader";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import type { RootState } from '../app/store';
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import RecipeHeader from "./RecipeHeader";
 import { Recipe } from '../types/types';
 
+// Filter functions
 function titleMatch(recipe: Recipe, query: string): boolean {
   return recipe.title.toLowerCase().indexOf(query) > -1;
 }
@@ -24,17 +25,20 @@ function ingredientsMatch(recipe: Recipe, query: string): boolean {
   return matches.length > 0;
 }
 
+// Home page component
 export default function Home() {
   const allRecipes = useSelector((state: RootState) => state.recipes.recipes);
-  const [filteredRecipes, setFilteredRecipes] = useState(allRecipes);
 
+  // Search filter related state
+  const [filteredRecipes, setFilteredRecipes] = useState(allRecipes);
   const handleSearch = (event: any) => {
     const query = event.target.value.toLowerCase();
     if (query === '') {
       setFilteredRecipes(allRecipes);
     } else {
       setFilteredRecipes(allRecipes.filter((recipe) => {
-        return titleMatch(recipe, query) || tagsMatch(recipe, query) || ingredientsMatch(recipe, query);
+        return titleMatch(recipe, query) || tagsMatch(recipe, query)
+          || ingredientsMatch(recipe, query);
       }));
     }
   };
@@ -51,7 +55,8 @@ export default function Home() {
           noValidate
           autoComplete="off"
         >
-          <TextField id="filter-box" label={`Search ${allRecipes.length} recipes`} onChange={handleSearch} variant="outlined" />
+          <TextField id="filter-box" label={`Search ${allRecipes.length} recipes`}
+            onChange={handleSearch} variant="outlined" />
         </Box>
       </div>
       <div className="m-auto max-w-[800px]">
