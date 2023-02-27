@@ -17,7 +17,7 @@ Live demo: https://entropizer.calebds.dev
   - Redux Toolkit for state management
   - React Router DOM for routing
   - Styles
-    - MUI React for AppBar, base styles, icons.
+    - MUI React for AppBar, text inputs, icons.
     - TailwindCSS for rapid prototyping
 - Project Structure
   - `/app` - app state
@@ -33,7 +33,6 @@ Live demo: https://entropizer.calebds.dev
   - [Recipe titles (sampled)](https://github.com/dpapathanasiou/recipes)
   - [Lorem Ipsum, names, customized with theme words](https://github.com/dejavu1987/jabber)
   - [Placeholder iages](https://www.placeholder.com/)
-
 
 ## TODO
 - style modal
@@ -79,6 +78,6 @@ ScaleSlice
 - deploy on Vercel
 
 ## Feedback
-- extra 'ff' at the end of color pallette values
+- minor typo fixes submitted to README.md
 - description is very broad, many degrees of freedom, I would reduce what is _required_ and make it more precise, so that it's feasible to do in 1-2 days
 - consider adding a hosting requirement to check devops / infra abilities

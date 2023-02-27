@@ -7,13 +7,12 @@ export default function Bookmarks() {
   const bookmarks = useSelector(
     (state: RootState) => Object.values(state.bookmarks.bookmarks)
   );
-  // const bookmarks = useSelector((state: RootState) => state.recipes.recipes);
   const username = useSelector((state: RootState) => state.auth.name);
   return (
     authenticated ?
       <div>
         <h2 className="text-xl mb-4 font-semibold">{username}'s Bookmarks</h2>
-        <ul className="flex flex-col space-y-4">
+        {bookmarks.length > 0 ? <ul className="flex flex-col space-y-4">
           {
             bookmarks.map((recipe, i) => (
               <li key={i}>
@@ -21,7 +20,7 @@ export default function Bookmarks() {
               </li>
             ))
           }
-        </ul>
+        </ul> : <div className="mt-2">Add some bookmarks!</div>}
       </div> :
       <div>Sign in to start saving recipes.</div>
   );

@@ -51,7 +51,7 @@ export default function Home() {
           noValidate
           autoComplete="off"
         >
-          <TextField id="filter-box" label="Search" onChange={handleSearch} variant="outlined" />
+          <TextField id="filter-box" label={`Search ${allRecipes.length} recipes`} onChange={handleSearch} variant="outlined" />
         </Box>
       </div>
       <div className="m-auto max-w-[800px]">

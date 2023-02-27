@@ -41,8 +41,8 @@ const modalStyle = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: '#FFFFFF',
-  border: '2px solid #000',
+  backgroundColor: '#FBF6EF',
+  border: '2px solid #4d243d',
   boxShadow: 24,
   p: 4,
 };
@@ -95,9 +95,11 @@ export default function App(props) {
           aria-describedby="modal-modal-description"
         >
           <Box style={modalStyle}>
-            <div className="p-4">
-              <TextField id="username-field" label="Full Name" onChange={handleNameChange} variant="standard" />
-              <Button color="primary" size="large" variant="contained" disabled={userNameInput.length < 3} onClick={handleLogin}>Sign In</Button>
+            <div className="p-6 flex">
+              <TextField className="flex-grow" id="username-field" label="Enter your name" onChange={handleNameChange} variant="outlined" />
+              <Button color="primary" sx={{
+                ml: 1
+              }} size="large" variant="contained" disabled={userNameInput.length < 3} onClick={handleLogin}>Sign In</Button>
             </div>
           </Box>
         </Modal>

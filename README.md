@@ -1,3 +1,5 @@
+[Click here for implementation notes](./NOTES.md)
+
 # SFI Example Project
 This project is an opportunity for you to demonstrate your technical knowledge, problem solving methods and coding style. If you don't finish all of the features, that's OK and even expected. Prioritize what you think is most important. 
 

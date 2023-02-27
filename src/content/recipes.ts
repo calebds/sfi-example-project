@@ -4,7 +4,7 @@ import ingredients from "./ingredients.json";
 import tags from "./tags.json";
 import Jabber from "jabber";
 
-const maxRecipes = 20;
+const maxRecipes = 50;
 
 const mse2000 = 946713600000;
 const maxMse = new Date().getTime();
@@ -12,7 +12,6 @@ const maxMse = new Date().getTime();
 const colorPallete = [
   'edd4b2',
   'd0a98f',
-  //'4d243d',
   'cac2b5',
   'ecdcc9'
 ];
@@ -72,7 +71,8 @@ function generateRandomIngredient(): Ingredient {
 
 function generateRandomIngredients(max: number): Ingredient[] {
   const ingredientsList = [];
-  for (let i = 0; i < getRandomInt(max) + 1; i++) {
+  const num = getRandomInt(max) + 1;
+  for (let i = 0; i < num; i++) {
     ingredientsList.push(generateRandomIngredient());
   }
   return ingredientsList;
@@ -80,7 +80,8 @@ function generateRandomIngredients(max: number): Ingredient[] {
 
 function generateRandomTags(max: number): string[] {
   const tagList = [];
-  for (let i = 0; i < getRandomInt(max) + 1; i++) {
+  const num = getRandomInt(max) + 1;
+  for (let i = 0; i < num; i++) {
     tagList.push(capitalizeFirstLetter(getRandomItemFromArray(tags.tags)));
   }
   return tagList;
@@ -88,7 +89,8 @@ function generateRandomTags(max: number): string[] {
 
 function generateRandomParagraphs(max: number): string {
   const paragraphs = [];
-  for (let i = 0; i < getRandomInt(max) + 1; i++) {
+  const num = getRandomInt(max) + 1;
+  for (let i = 0; i < num; i++) {
     paragraphs.push(jabber.createParagraph(getRandomInt(50) + 1));
   }
   return paragraphs.join('\n\n');
@@ -121,7 +123,8 @@ export function generateRandomRecipe(): Recipe {
 
 function generateRandomRecipes(max: number): Recipe[] {
   const recipes = [];
-  for (let i = 0; i < getRandomInt(max) + 1; i++) {
+  const num = getRandomInt(max) + 1;
+  for (let i = 0; i < num; i++) {
     recipes.push(generateRandomRecipe());
   }
   return recipes;
